@@ -14,10 +14,8 @@ export class CategoriesService {
     return category;
   }
 
-  async getCategoryByName(name: string) {
-    const category = await this.categoryRepository.findOne({
-      where: { name },
-    });
+  async getAllCategory() {
+    const category = await this.categoryRepository.findAll();
     return category;
   }
 }
