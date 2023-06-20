@@ -40,7 +40,7 @@ export class User extends Model<User, UserCreationAttrs> {
   })
   password: string;
 
-  @ApiProperty({ example: 'USER', description: 'User role' })
+  @ApiProperty({ example: 'USER', description: 'User roles' })
   @BelongsToMany(() => UserRole, () => UserRolesCorresponds)
-  role: UserRole[];
+  roles: UserRole[];
 }
