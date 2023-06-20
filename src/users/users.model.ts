@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
 import { Category } from 'src/categories/categories.model';
+import { userRoles } from './user-roles';
 
 interface UserCreationAttrs {
   email: string;
@@ -35,11 +36,10 @@ export class User extends Model<User, UserCreationAttrs> {
 
   @ApiProperty({ example: 'User', description: 'Role' })
   @Column({
-    type: DataType.STRING,
-    defaultValue: 'USER',
+    type: DataType.ENUM,
+    values: userRoles,
+    defaultValue: 'user',
+    allowNull: false,
   })
   role: string;
-
-  @HasMany(() => Category)
-  categories: Category[];
 }
