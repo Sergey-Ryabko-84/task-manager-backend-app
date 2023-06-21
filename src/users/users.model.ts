@@ -3,9 +3,11 @@ import {
   BelongsToMany,
   Column,
   DataType,
+  HasMany,
   Model,
   Table,
 } from 'sequelize-typescript';
+import { Category } from 'src/categories/categories.model';
 import { UserRolesCorresponds } from 'src/user-roles/user-roles-corresponds.model';
 import { UserRole } from 'src/user-roles/user-roles.model';
 
@@ -43,4 +45,7 @@ export class User extends Model<User, UserCreationAttrs> {
   @ApiProperty({ example: 'USER', description: 'User roles' })
   @BelongsToMany(() => UserRole, () => UserRolesCorresponds)
   roles: UserRole[];
+
+  @HasMany(() => Category)
+  categories: Category[];
 }

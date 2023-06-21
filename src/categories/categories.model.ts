@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
+  BelongsTo,
   Column,
   DataType,
   ForeignKey,
@@ -35,4 +36,7 @@ export class Category extends Model<Category, CategoriesCreationAttrs> {
   @ForeignKey(() => User)
   @Column({ type: DataType.INTEGER })
   userId: number;
+
+  @BelongsTo(() => User)
+  user: User;
 }
