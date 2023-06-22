@@ -35,12 +35,16 @@ export class AuthService {
     return this.generateToken(user);
   }
 
+  async getCurrent(user: User) {
+    const currentUser = await this.usersService.getUserByEmail(user.email);
+    return currentUser;
+  }
+
   private generateToken(user: User) {
     const payload = {
       id: user.id,
       email: user.email,
       roles: user.roles,
-      categories: user.categories,
     };
     return {
       token: this.jwtService.sign(payload),
