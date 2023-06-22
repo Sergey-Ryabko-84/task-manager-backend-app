@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Post,
   UseGuards,
@@ -8,10 +9,13 @@ import {
 } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger/dist';
 import { CategoriesService } from './categories.service';
-import { createCategoryDto } from './dto/create-category-dto';
 import { Category } from './categories.model';
+import { CreateCategoryDto } from './dto/create-category-dto';
+import { CategoryIdDto } from './dto/category-id-dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { ValidationPipe } from 'src/pipes/validation.pipe';
+import { ReqUser } from 'src/auth/user.decorator';
+import { User } from 'src/users/users.model';
 
 @ApiTags('Categories')
 @Controller('categories')
@@ -23,8 +27,8 @@ export class CategoriesController {
   @UseGuards(JwtAuthGuard)
   @UsePipes(ValidationPipe)
   @Post()
-  create(@Body() dto: createCategoryDto) {
-    return this.categoriesService.createCategory(dto);
+  create(@Body() dto: CreateCategoryDto, @ReqUser() user: User) {
+    return this.categoriesService.createCategory(dto, user);
   }
 
   @ApiOperation({ summary: 'Get all categories' })
@@ -33,5 +37,15 @@ export class CategoriesController {
   @Get()
   getAll() {
     return this.categoriesService.getAllCategory();
+  }
+
+  @ApiOperation({ summary: 'Delete category' })
+  @ApiResponse({ status: 200, type: [Category] })
+  @UseGuards(JwtAuthGuard)
+  @UsePipes(ValidationPipe)
+  @Delete()
+  deleteById(@Body() dto: CategoryIdDto, @ReqUser() user: User) {
+    const massage = this.categoriesService.deleteCategoryById(dto, user);
+    return massage;
   }
 }
