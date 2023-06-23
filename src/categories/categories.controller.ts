@@ -19,6 +19,8 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { ValidationPipe } from 'src/pipes/validation.pipe';
 import { ReqUser } from 'src/auth/user.decorator';
 import { User } from 'src/users/users.model';
+import { Roles } from 'src/auth/roles-auth.decorator';
+import { RolesGuard } from 'src/auth/roles.guard';
 
 @ApiTags('Categories')
 @Controller('categories')
@@ -36,7 +38,8 @@ export class CategoriesController {
 
   @ApiOperation({ summary: 'Get all categories' })
   @ApiResponse({ status: 200, type: [Category] })
-  @UseGuards(JwtAuthGuard)
+  @Roles('ADMIN')
+  @UseGuards(RolesGuard)
   @Get()
   getAll() {
     return this.categoriesService.getAllCategory();
