@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  Patch,
   Post,
   UseGuards,
   UsePipes,
@@ -11,6 +12,7 @@ import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger/dist';
 import { CategoriesService } from './categories.service';
 import { Category } from './categories.model';
 import { CreateCategoryDto } from './dto/create-category-dto';
+import { EditCategoryDto } from './dto/edit-category-dto';
 import { CategoryIdDto } from './dto/category-id-dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { ValidationPipe } from 'src/pipes/validation.pipe';
@@ -37,6 +39,15 @@ export class CategoriesController {
   @Get()
   getAll() {
     return this.categoriesService.getAllCategory();
+  }
+
+  @ApiOperation({ summary: 'Edit category' })
+  @ApiResponse({ status: 200, type: Category })
+  @UseGuards(JwtAuthGuard)
+  @UsePipes(ValidationPipe)
+  @Patch()
+  edit(@Body() dto: EditCategoryDto, @ReqUser() user: User) {
+    return this.categoriesService.editCategory(dto, user);
   }
 
   @ApiOperation({ summary: 'Delete category' })
