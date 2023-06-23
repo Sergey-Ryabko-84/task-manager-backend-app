@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  Param,
   Patch,
   Post,
   UseGuards,
@@ -42,6 +43,14 @@ export class TasksController {
   @Get()
   getAll() {
     return this.tasksService.getAllTask();
+  }
+
+  @ApiOperation({ summary: 'Get task by id' })
+  @ApiResponse({ status: 200, type: [Task] })
+  @UseGuards(JwtAuthGuard)
+  @Get('/:id')
+  getCategoryById(@Param('id') id: number) {
+    return this.tasksService.getTaskById({ id });
   }
 
   @ApiOperation({ summary: 'Edit task' })
