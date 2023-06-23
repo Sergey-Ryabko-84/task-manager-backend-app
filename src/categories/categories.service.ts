@@ -21,7 +21,9 @@ export class CategoriesService {
   }
 
   async getAllCategory() {
-    const category = await this.categoryRepository.findAll();
+    const category = await this.categoryRepository.findAll({
+      include: { all: true },
+    });
     return category;
   }
 
@@ -38,7 +40,9 @@ export class CategoriesService {
   }
 
   async getCategoryById(dto: CategoryIdDto) {
-    const category = await this.categoryRepository.findByPk(dto.id);
+    const category = await this.categoryRepository.findByPk(dto.id, {
+      include: { all: true },
+    });
     return category;
   }
 

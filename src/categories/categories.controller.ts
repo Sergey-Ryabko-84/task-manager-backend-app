@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  Param,
   Patch,
   Post,
   UseGuards,
@@ -39,6 +40,14 @@ export class CategoriesController {
   @Get()
   getAll() {
     return this.categoriesService.getAllCategory();
+  }
+
+  @ApiOperation({ summary: 'Get category by id' })
+  @ApiResponse({ status: 200, type: [Category] })
+  @UseGuards(JwtAuthGuard)
+  @Get('/:id')
+  getCategoryById(@Param('id') id: number) {
+    return this.categoriesService.getCategoryById({ id });
   }
 
   @ApiOperation({ summary: 'Edit category' })
