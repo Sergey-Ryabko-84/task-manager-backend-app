@@ -14,6 +14,11 @@ export class UserRolesService {
     return userRole;
   }
 
+  async getAllUserRole() {
+    const userRoles = await this.userRoleRepository.findAll();
+    return userRoles;
+  }
+
   async getUserRoleByValue(value: string) {
     const userRole = await this.userRoleRepository.findOne({
       where: { value },
