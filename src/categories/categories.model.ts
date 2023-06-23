@@ -4,9 +4,11 @@ import {
   Column,
   DataType,
   ForeignKey,
+  HasMany,
   Model,
   Table,
 } from 'sequelize-typescript';
+import { Task } from 'src/tasks/tasks.model';
 import { User } from 'src/users/users.model';
 
 interface CategoriesCreationAttrs {
@@ -39,4 +41,7 @@ export class Category extends Model<Category, CategoriesCreationAttrs> {
 
   @BelongsTo(() => User)
   user: User;
+
+  @HasMany(() => Task)
+  tasks: Task[];
 }

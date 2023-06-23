@@ -9,6 +9,8 @@ import { UserRolesCorresponds } from './user-roles/user-roles-corresponds.model'
 import { CategoriesModule } from './categories/categories.module';
 import { Category } from './categories/categories.model';
 import { AuthModule } from './auth/auth.module';
+import { TasksModule } from './tasks/tasks.module';
+import { Task } from './tasks/tasks.model';
 
 @Module({
   controllers: [],
@@ -22,13 +24,14 @@ import { AuthModule } from './auth/auth.module';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [User, UserRole, UserRolesCorresponds, Category],
+      models: [User, UserRole, UserRolesCorresponds, Category, Task],
       autoLoadModels: true,
     }),
     UsersModule,
     CategoriesModule,
     UserRolesModule,
     AuthModule,
+    TasksModule,
   ],
 })
 export class AppModule {}
