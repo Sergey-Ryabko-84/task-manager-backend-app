@@ -11,5 +11,6 @@ import { Task } from 'src/tasks/tasks.model';
   controllers: [CategoriesController],
   providers: [CategoriesService],
   imports: [SequelizeModule.forFeature([Category, User, Task]), AuthModule],
+  exports: [CategoriesService],
 })
 export class CategoriesModule {}
