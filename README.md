@@ -1,30 +1,123 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+## Task manager backend app 1.0.0 
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## The API documentation
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This project is a backend application designed to serve as a task manager for managing company personnel. It utilizes various technologies for its development, including:
+
+Node.js: A runtime environment for executing JavaScript code on the server.
+Nest.js: A powerful and scalable framework for building efficient server-side applications using TypeScript.
+TypeScript: A typed superset of JavaScript that compiles to plain JavaScript.
+PostgreSQL: A powerful and popular open-source relational database management system.
+Docker Compose: A tool for defining and running multi-container Docker applications.
+
+Implemented Features:
+
+1. Nest.js Framework: The application has been developed using the Nest.js framework, which provides a solid foundation for building efficient and scalable server-side applications.
+
+2. Docker Compose: A Docker Compose file has been created to facilitate the containerization of both the PostgreSQL database and the Nest.js application.
+
+3. JWT Registration and Authorization: User registration and authorization have been implemented using JSON Web Tokens (JWT) to ensure secure access to the application's resources.
+
+4. Users Module: A module has been created to manage users, including features such as user creation and retrieval.
+
+5. Categories Module: Another module has been implemented to handle categories, allowing for the creation, retrieval, update, and deletion of category information.
+
+6. Tasks Module: A module has been developed to manage tasks, providing functionalities such as task creation, retrieval, update, and deletion.
+
+7. Table Relationships: All necessary relationships between tables (such as users, categories, and tasks) have been established to ensure proper data integrity and efficient querying.
+
+By combining these technologies and successfully implementing the specified requirements, this backend application serves as a reliable task manager for efficiently managing company personnel.
+
+## Routs:
+
+## Users
+
+[POST]  
+/users  
+Create user
+
+[GET]  
+/users  
+Get all users
+
+[POST]  
+/users/role  
+Assign a role
+
+## User Roles
+
+[POST]  
+/user-roles  
+Create user role
+
+[GET]  
+/user-roles  
+Get all user roles
+
+[GET]  
+/user-roles/{value}  
+Get user role by value
+
+## Authorization
+
+[POST]  
+/auth/login  
+Login
+
+[POST]  
+/auth/registration  
+Registration
+
+[GET]  
+/auth/current  
+Get Current User
+
+## Categories
+
+[POST]  
+/categories  
+Create category
+
+[GET]  
+/categories  
+Get all categories
+
+[PATCH]  
+/categories  
+Edit category
+
+[DELETE]  
+/categories  
+Delete category
+
+[GET]  
+/categories/{id}  
+Get category by id
+
+## Tasks
+
+
+[POST]  
+/tasks  
+Create task
+
+[GET]  
+/tasks  
+Get all tasks
+
+[PATCH]  
+/tasks  
+Edit task
+
+[DELETE]  
+/tasks  
+Delete task
+
+[GET]  
+/tasks/{id}  
+Get task by id
 
 ## Installation
 
@@ -45,29 +138,8 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+- Author - [Serhii Riabko]
+- LinkedIn - [serhii-ryabko-250247255](https://www.linkedin.com/in/serhii-ryabko-250247255/)
+- Email - [serhii.ryabko@gmail.com](serhii.ryabko@gmail.com)
