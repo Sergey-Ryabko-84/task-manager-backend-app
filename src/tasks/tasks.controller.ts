@@ -68,7 +68,6 @@ export class TasksController {
   @UsePipes(ValidationPipe)
   @Delete()
   deleteById(@Body() dto: TaskIdDto, @ReqUser() user: User) {
-    const massage = this.tasksService.deleteTaskById(dto, user);
-    return massage;
+    return this.tasksService.deleteTaskById(dto, user);
   }
 }

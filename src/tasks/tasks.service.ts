@@ -54,7 +54,7 @@ export class TasksService {
     });
     if (category.userId === user.id) {
       await this.taskRepository.destroy({ where: { ...dto } });
-      return { massage: 'Task successfully deleted' };
+      return { id: task.id };
     }
     throw new HttpException('No access', HttpStatus.FORBIDDEN);
   }

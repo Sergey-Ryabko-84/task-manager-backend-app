@@ -50,7 +50,7 @@ export class CategoriesService {
     const category = await this.getCategoryById(dto);
     if (category.userId === user.id) {
       await this.categoryRepository.destroy({ where: { ...dto } });
-      return { massage: 'Category successfully deleted' };
+      return { id: category.id };
     }
     throw new HttpException('No access', HttpStatus.FORBIDDEN);
   }

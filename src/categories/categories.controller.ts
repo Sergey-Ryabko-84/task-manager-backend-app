@@ -68,7 +68,6 @@ export class CategoriesController {
   @UsePipes(ValidationPipe)
   @Delete()
   deleteById(@Body() dto: CategoryIdDto, @ReqUser() user: User) {
-    const massage = this.categoriesService.deleteCategoryById(dto, user);
-    return massage;
+    return this.categoriesService.deleteCategoryById(dto, user);
   }
 }
