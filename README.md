@@ -119,6 +119,9 @@ Delete task
 /tasks/{id}  
 Get task by id
 
+## P.S.
+To run the project locally, please utilize the .development.env.example and .production.env.example files. These files store the environment variable data required for project execution.
+
 ## Installation
 
 ```bash
