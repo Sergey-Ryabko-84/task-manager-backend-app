@@ -66,8 +66,8 @@ export class TasksController {
   @ApiResponse({ status: 200, type: [Task] })
   @UseGuards(JwtAuthGuard)
   @UsePipes(ValidationPipe)
-  @Delete()
-  deleteById(@Body() dto: TaskIdDto, @ReqUser() user: User) {
-    return this.tasksService.deleteTaskById(dto, user);
+  @Delete('/:id')
+  deleteById(@Param('id') id: number, @ReqUser() user: User) {
+    return this.tasksService.deleteTaskById({ id }, user);
   }
 }

@@ -66,8 +66,8 @@ export class CategoriesController {
   @ApiResponse({ status: 200, type: [Category] })
   @UseGuards(JwtAuthGuard)
   @UsePipes(ValidationPipe)
-  @Delete()
-  deleteById(@Body() dto: CategoryIdDto, @ReqUser() user: User) {
-    return this.categoriesService.deleteCategoryById(dto, user);
+  @Delete('/:id')
+  deleteById(@Param('id') id: number, @ReqUser() user: User) {
+    return this.categoriesService.deleteCategoryById({ id }, user);
   }
 }
