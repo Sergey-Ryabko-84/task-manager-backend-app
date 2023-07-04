@@ -1,6 +1,6 @@
 ## Task manager backend app 1.0.0 
 
-## The API documentation
+## The REST API documentation
 
 ## Description
 
